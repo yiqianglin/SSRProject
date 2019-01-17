@@ -11,3 +11,6 @@ cd ssr 执行 npm install 后 npm run ssr
 这个就是ssr的项目代码
 
 最后等bundle生成后，访问 http://localhost:8089/mobile/home.html
+
+首页效果图：
+![Alt text](https://github.com/yiqianglin/SSRProject/blob/master/ssr.jpg)
