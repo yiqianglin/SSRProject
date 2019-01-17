@@ -62,7 +62,7 @@ export default {
             name: ''
         }
       })
-      this.keystoneList = result.activelist
+      this.keystoneList = result.data
     },
     async getBanner () {
       let result = await request({
@@ -74,8 +74,8 @@ export default {
         }
       })
       // console.log(result)
-      this.bannerList = result.activelist
-      this.activeOps.list = result.activelist
+      this.bannerList = result.data
+      this.activeOps.list = result.data
       return result
     },
     toMy () {

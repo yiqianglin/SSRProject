@@ -25,9 +25,10 @@ module.exports = {
                 return ((pathname.match('^/mobile') || pathname.match('^/api')) && !pathname.match('.html'))
             },
             options: {
-                target: 'http://baikedev.sparta.html5.qq.com',
+                target: 'http://localhost:3012/ums/baike/',
                 changeOrigin: true,
-                ws: true
+                ws: true,
+                pathRewrite: function (path, req) { return path.replace('/mobile', '/') }
             }
         },
         // CSS Sourcemaps off by default because relative paths are "buggy"
