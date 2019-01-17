@@ -1,0 +1,91 @@
+@import '~src/assets/style/common-util';
+.btn-link {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  @include setTouchBackground;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@keyframes drop-strech {
+  from {
+    opacity: 0;
+    height: 0;
+  }
+  to {
+    opacity: 1;
+    height: 50px;
+  }
+}
+
+.disscroll {
+  //弹窗需要禁止页面其他滚动
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 100%;
+}
+
+// 正在加载中动画
+.dotting {
+  font-size: 0;
+  vertical-align: middle;
+  i {
+    height: 0.08rem;
+    width: 0.08rem;
+    border-radius: 0.04rem;
+    margin-right: 0.12rem;
+    background-color: #B8BFC4;
+    display: inline-block;
+    opacity: 0;
+    vertical-align: middle;
+    &:nth-child(1) {
+      animation: dot 1.5s -1s infinite step-start both;
+    }
+    &:nth-child(2) {
+      animation: dot 1.5s -.5s infinite step-start both;
+    }
+    &:nth-child(3) {
+      animation: dot 1.5s 0s infinite step-start both;
+    }
+  }
+}
+
+@keyframes dot {
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.reload{
+  position:fixed;
+  width:.8rem;
+  height:.8rem;
+  background: {
+    image:url(~src/assets/images/mobile/common/reload.png);
+    repeat:no-repeat;
+    position:center;
+    size:contain;
+  }
+  // margin:auto;
+  bottom:1.4rem;
+  // left:0;
+  right:.3rem;
+  z-index:101;
+}

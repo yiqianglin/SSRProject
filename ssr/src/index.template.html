@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="screen-orientation" content="portrait" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="full-screen" content="yes">
+  <meta name="x5-fullscreen" content="true">
+  <meta itemprop="name" content="ssr例子"/>
+  <meta itemprop="description" content="ssr例子"/>
+  <meta itemprop="image" content="https://github.com/fluidicon.png"/>
+  <title>ssr例子</title>
+  <script>
+      function loadError(e) {
+        function LoadError(message) {
+          this.name = 'LoadError'
+          this.message = message || 'Default Message'
+          this.stack = (new Error()).stack
+        }
+        LoadError.prototype = Object.create(Error.prototype)
+        LoadError.prototype.constructor = LoadError
+        //上报加载失败事件
+        window.Raven&&Raven.captureException(new LoadError(e.src + ' load failed'), {
+          level: 'warning'
+        })
+      }
+      function loadScript(obj) {
+        //排查script加载顺序及是否加载成功
+        console.log(obj.attributes['src'].nodeValue)
+      }
+  
+      // flexible
+      (function (document, window) {
+        var docEl = document.documentElement,
+          event = 'orientationchange' in window ? 'orientationchange' : 'resize',
+          recalc = function () {
+            var size = 750;
+            var zoom = docEl.clientWidth / size;
+            // if(zoom > 1) docEl.style.fontSize = '100px';
+            // docEl.style.fontSize = 100 * zoom + 'px';
+            if (zoom > 1) {
+              docEl.style.fontSize = '100px';
+            } else {
+              docEl.style.fontSize = 100 * zoom + 'px';
+            }
+            console.log('设置font-size')
+          };
+          recalc()
+        if (!window.addEventListener) return;
+        window.addEventListener(event, recalc, false);
+        window.addEventListener('DOMContentLoaded', recalc, false);
+      })(document, window);
+      console.log('font-size flexibale')
+  
+  </script>
+</head>
+
+<body>
+
+    <!--vue-ssr-outlet-->
+
+
+</body>
+
+</html>

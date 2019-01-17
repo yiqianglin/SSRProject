@@ -1,0 +1,5 @@
+ssr/node_modules/*
+ssr-server-forgery/node_modules/*
+
+.vscode/
+.DS_Store

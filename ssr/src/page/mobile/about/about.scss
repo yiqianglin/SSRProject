@@ -1,0 +1,73 @@
+@import '~src/assets/style/common-util';
+.container{
+  background: $background;
+  width: 7.5rem;
+  margin: 0 auto;
+  position: relative;
+}
+.banner {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 2.6rem;
+  background: url(http://s.pc.qq.com/tdf/ydd/about_banner.png) center no-repeat;
+  background-size: 100% 100%;
+  overflow: hidden;
+  .t1 {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding-top: .9rem;
+    padding-left: 1.66rem;
+    font-size: .4rem;
+    line-height: .4rem;
+    color: #fff;
+
+  }
+  .t2 {
+    width: 100%;
+    padding-top: .17rem;
+    padding-left: 1.66rem;
+    font-size: .3rem;
+    line-height: .3rem;
+    color: #fff;
+    opacity: .6;
+  }
+}
+.desc {
+  padding: .66rem .32rem;
+  background: $block-background;
+  box-shadow: $bottom-shadow;
+  .t1 {
+    font-size: .36rem;
+    font-weight: bold;
+    color: #0d0d0f;
+  }
+  .t2 {
+    margin-top: .4rem;
+    font-size: .3rem;
+    color: #676d70;
+  }
+}
+.list-body {
+  margin-top: .88rem;
+}
+.searcher-box .searcher .tab-list {
+    font-size: .36rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: .88rem;
+    text-align: center;
+    width: 100%;
+    color: #3e464a;
+}
+  .searcher-box .searcher .tab-list .search-menu {
+    position: absolute;
+    top: .26rem;
+    left: .32rem;
+    width: .31rem;
+    height: .35rem;
+    background: url(~src/assets/images/mobile/common/search-back.png) no-repeat center;
+    background-size: contain;
+}
