@@ -1,0 +1,39 @@
+
+.banner-container {
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  max-width: 7.5rem;
+  font-size: 0;
+}
+
+.banner-img {
+  width: 100%;
+  height: auto;
+}
+
+.banner-pagination {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0.25rem;
+  z-index: 1;
+  text-align: center;
+}
+
+.banner-bullet {
+  width: 0.08rem;
+  height: 0.08rem;
+  display: inline-block;
+  transform: rotate(45deg);
+  border: 0.01rem solid #fff;
+  border-radius: 0.02rem;
+  cursor: pointer;
+  margin: 0 0.08rem;
+  opacity: 0.6;
+
+  &.active {
+    background: #fff;
+    opacity: 1;
+  }
+}

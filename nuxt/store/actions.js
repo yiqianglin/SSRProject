@@ -1,11 +1,11 @@
 /* global baike */
 import * as types from './mutation-types'
-import { request } from 'src/js/common'
+import { request } from '~/plugins/common'
 
 const actions = {
     async getHotList ({ commit, rootState, cookies }) {
         let result = await request({
-            url: 'GetHotDiseasesV2',
+            url: '/api/GetHotDiseasesV2',
             method: 'POST',
             params: {
                 type: 0
@@ -18,7 +18,7 @@ const actions = {
     },
     async getActiveDataTop ({ commit }) {
         let result = await request({
-            url: 'GetActiveData',
+            url: '/api/GetActiveData',
             method: 'POST',
             params: {
                 activetype: 12,
@@ -32,7 +32,7 @@ const actions = {
     },
     async getKeystoneList ({ commit }) {
         let result = await request({
-            url: 'GetActiveData',
+            url: '/api/GetActiveData',
             method: 'POST',
             params: {
                 activetype: 11,
@@ -46,7 +46,7 @@ const actions = {
     },
     async getCancerList ({ commit }) {
         let result = await request({
-            url: 'GetTumourDiseases',
+            url: '/api/GetTumourDiseases',
             method: 'POST',
             params: {
             }

@@ -5,11 +5,11 @@ import qs from 'qs'
 axios.defaults.withCredentials = true
 
 let request
-if (process.platform === 'server') {
+if (process.server) {
     request = ({ url, method, params = {}, timeout = 60000 }) => {
         let options = {
             method: method || 'POST',
-            url: 'http://localhost:3012/ums/baike/' + url,
+            url: 'http://localhost:3012/ums/baike/' + url.replace('/api/', ''),
             responseType: 'json',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -60,6 +60,7 @@ if (process.platform === 'server') {
         } else {
             options.params = params
         }
+        console.log('url:', url)
         return axios(options).then((res) => {
             return checkStatus(res)
         }).catch((error) => {

@@ -22,6 +22,8 @@ module.exports = {
         assetsPublicPath: '/',
         proxyTable: {
             context: function (pathname, req) {
+                console.log(pathname, (pathname.match('^/mobile') || pathname.match('^/api')) &&
+                !pathname.match('.html'))
                 return ((pathname.match('^/mobile') || pathname.match('^/api')) && !pathname.match('.html'))
             },
             options: {
