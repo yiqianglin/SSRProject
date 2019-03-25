@@ -12,7 +12,10 @@
   <meta itemprop="name" content="ssr例子"/>
   <meta itemprop="description" content="ssr例子"/>
   <meta itemprop="image" content="https://github.com/fluidicon.png"/>
-  <title>ssr例子</title>
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <% for (var css in htmlWebpackPlugin.files.css) { %>
+    <link href="<%=htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+  <% } %>
   <script>
       function loadError(e) {
         function LoadError(message) {
@@ -60,8 +63,9 @@
 
 <body>
   <div id="app">
-    <!--vue-ssr-outlet-->
+    
   </div>
+
 </body>
 
 </html>

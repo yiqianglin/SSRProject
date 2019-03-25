@@ -4,6 +4,7 @@ import { mapGetters, mapState } from 'vuex'
 import { request } from 'src/js/common'
 
 import { ActiveBanner } from 'components/activity/activity'
+import TestComp from 'components/testComp/testComp.vue'
 // import publicHot from 'components/public_hot/public_hot.vue'
 
 export default {
@@ -19,7 +20,8 @@ export default {
     }
   },
   components: {
-    ActiveBanner
+    ActiveBanner,
+    TestComp
   },
   computed: {
     ...mapState ({
@@ -33,11 +35,16 @@ export default {
   },
   filters: {
   },
-  asyncData ({ store }) {
+  asyncData ({ store, component }) {
+    // console.log('this:', this.methods.getBanner())
+    // console.log('--------------------')
+    // console.log('component:', component)
+    let that = component
     return Promise.all([
       store.dispatch('getHotList'),
       store.dispatch('getActiveDataTop'),
       // store.dispatch('getKeystoneList'),
+      that.methods.getBanner(that)
     ])
   },
   created () {
@@ -46,7 +53,7 @@ export default {
   mounted () {
     // 这里下面两个获取数据，就可以访问组件的实例了
     this.getKeystoneList()
-    this.getBanner()
+    
     this.bind()
   },
   activated () {
@@ -64,7 +71,7 @@ export default {
       })
       this.keystoneList = result.data
     },
-    async getBanner () {
+    async getBanner (component) {
       let result = await request({
         url: 'GetActiveData',
         method: 'POST',
@@ -73,9 +80,12 @@ export default {
             name: ''
         }
       })
+      console.log('************', this, '这里拿到的this，就是mehtods')
+      component.bannerList = result.data
+      // component.activeOps.list = result.data
       // console.log(result)
-      this.bannerList = result.data
-      this.activeOps.list = result.data
+      // this.bannerList = result.data
+      // this.activeOps.list = result.data
       return result
     },
     toMy () {

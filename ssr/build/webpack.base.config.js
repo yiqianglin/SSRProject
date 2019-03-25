@@ -32,6 +32,7 @@ function generatorConfigByEnv (configList) {
 }
 
 module.exports = {
+    entry: {},
     performance: {
         maxEntrypointSize: 300000, // 入口最大的size
         hints: isBuilding ? 'warning' : false

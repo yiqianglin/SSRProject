@@ -1,4 +1,5 @@
 const fs = require('fs')
+const MemoryFileSystem = require('memory-fs')
 const path = require('path')
 const LRU = require('lru-cache')
 const express = require('express')
@@ -7,6 +8,7 @@ const compression = require('compression')
 const { createBundleRenderer } = require('vue-server-renderer')
 const cookieParser = require('cookie-parser')
 const resolve = file => path.resolve(__dirname, file)
+const mfs = new MemoryFileSystem()
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -67,7 +69,7 @@ if (isProd) {
     )
 }
 
-function render(req, res) {
+function render(req, res, toSave) {
     const s = Date.now()
 
     res.setHeader('Content-Type', 'text/html')
@@ -96,6 +98,7 @@ function render(req, res) {
         if (err) {
             return handleError(err)
         }
+        if (toSave) console.log(html)
         res.send(html)
         if (!isProd) {
             console.log(`whole request: ${Date.now() - s}ms`)
@@ -114,15 +117,26 @@ app.use(favicon('./favicon.ico'))
 app.use('/dist', serve('./dist', true))
 
 app.get(
-    '*',
+    ['/mobile/home.html', '/mobile/home_cancer.html'],
     isProd
         ? render
         : (req, res) => {
             return readyPromise.then(() => {
-                render(req, res)
+                render(req, res, true)
             })
         }
 )
+// app.get(
+//     '*',
+//     isProd
+//         ? render
+//         : (req, res) => {
+//             return readyPromise.then(() => {
+//                 render(req, res, false)
+//             })
+//         }
+// )
+
 
 const port = process.env.PORT || 8089
 app.listen(port, () => {

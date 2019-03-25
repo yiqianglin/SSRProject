@@ -6,7 +6,7 @@
       <span :class="{update: redpointState}" class="icon-my" @click="toMy" />
       <div class="home-search">
         <div class="search-btn" @click="toSearch">
-          <span>搜疾病／症状／文章</span>
+          <span>搜疾病／症状／文章sss</span>
         </div>
         <!-- 搜索热词 -->
         <p class="search-hot ellipsis" v-if="hotList && hotList.length">
@@ -38,6 +38,7 @@
         <a href="javascript:" class="btn-link" />
       </p>
     </div>
+    <test-comp :dt="departList"></test-comp>
   </div>
 </template>
 

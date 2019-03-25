@@ -2,7 +2,7 @@
   <div v-cloak id="main" class="container">
     <div class="list-body">
       <div class="banner">
-        <div class="t1">传递健康与信赖</div>
+        <div class="t1">传递健康与三生三世信11222赖</div>
         <div class="t2"></div>
       </div>
       <div class="desc">
@@ -11,7 +11,7 @@
       </div>
     </div>
   </div>
-</template>
+</template> 
 
 <script>
 export default {

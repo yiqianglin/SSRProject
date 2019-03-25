@@ -18,6 +18,7 @@ export function createApp() {
     const app = new Vue({
         router,
         store,
+        el: '#app',
         render: h => h(App)
     })
 

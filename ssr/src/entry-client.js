@@ -27,5 +27,5 @@ router.onReady(() => {
             })
             .catch(next)
     })
-    app.$mount('.routerView')
+    // app.$mount('#app')
 })
