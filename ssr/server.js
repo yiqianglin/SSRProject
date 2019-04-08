@@ -98,7 +98,7 @@ function render(req, res, toSave) {
         if (err) {
             return handleError(err)
         }
-        if (toSave) console.log(html)
+        // if (toSave) console.log(html)
         res.send(html)
         if (!isProd) {
             console.log(`whole request: ${Date.now() - s}ms`)

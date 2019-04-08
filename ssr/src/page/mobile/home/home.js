@@ -16,12 +16,14 @@ export default {
         area: 'list_top'
       },
       bannerList: null,
-      keystoneList: []
+      keystoneList: [],
+      departList2: [{}]
     }
   },
   components: {
     ActiveBanner,
-    TestComp
+    TestComp,
+    TestCompTwo: TestComp
   },
   computed: {
     ...mapState ({

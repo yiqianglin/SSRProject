@@ -7,7 +7,7 @@
   "scripts": {
     "build:ssr-client": "cross-env NODE_ENV=production NODE_TYPE=server  webpack --config build/webpack.client.dev.config.js --env=production --progress --hide-modules",
     "build:ssr-server": "cross-env NODE_ENV=production NODE_TYPE=server  webpack --config build/webpack.server.config.js --progress --hide-modules",
-    "dev": "cross-env NODE_ENV=development nodemon server --exec babel-node",
+    "dev": "nodemon server --exec babel-node",
     "lint": "eslint --ext .jsx,.js,.vue src/ --fix",
     "ssr": "cross-env NODE_ENV=development node server --exec babel-node"
   },

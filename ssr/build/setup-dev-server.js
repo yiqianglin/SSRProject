@@ -56,11 +56,11 @@ module.exports = function setupDevServer(app, templatePath, cb) {
         {
            name: 'clientCommon', ...clientConfig 
         },
-        {
-            name: 'clientNoSSR', ...clientNoSSRConfig
-        }
+        // {
+        //     name: 'clientNoSSR', ...clientNoSSRConfig
+        // }
     ]
-    console.log(JSON.stringify(combineConfig))
+    // console.log(JSON.stringify(combineConfig))
     const combineCompiler = webpack(combineConfig)
     // clientCompiler.outputFileSystem = new MFS()
     const devMiddleware = require('webpack-dev-middleware')(combineCompiler, {
@@ -86,7 +86,7 @@ module.exports = function setupDevServer(app, templatePath, cb) {
     })
     combineCompiler.hooks.done.tap('afterEmit', (compilation) => {
         const html = devMiddleware.fileSystem.readFileSync(path.join(clientNoSSRConfig.output.path + '/indexNoSSR.html'), 'utf-8')
-        console.log('******cmfs*****:', html)
+        // console.log('******cmfs*****:', html)
         app.get(/\/.*.html$/, (req, res) => {
             res.end(html)
         })

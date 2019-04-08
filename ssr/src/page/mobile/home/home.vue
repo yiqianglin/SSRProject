@@ -39,6 +39,7 @@
       </p>
     </div>
     <test-comp :dt="departList"></test-comp>
+    <test-comp-two :dt="departList2"></test-comp-two>
   </div>
 </template>
 
