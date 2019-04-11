@@ -37,17 +37,26 @@ export default {
   },
   filters: {
   },
-  asyncData ({ store, component }) {
-    // console.log('this:', this.methods.getBanner())
+  async asyncData ({ store, component }) {
+    // console.log('this:', this.methods)
     // console.log('--------------------')
     // console.log('component:', component)
-    let that = component
-    return Promise.all([
+    // let that = component
+    await Promise.all([
       store.dispatch('getHotList'),
       store.dispatch('getActiveDataTop'),
       // store.dispatch('getKeystoneList'),
-      that.methods.getBanner(that)
+      // this.methods.getBanner(this)
     ])
+    return {
+      activeOps: {
+        list: [],
+        area: 'ssssssss'
+      },
+      bannerList: [{name: 'qqqqqqqqqqqq'}],
+      otherTest: 'otherTest111',
+      keystoneList: []
+    }
   },
   created () {
     // this.$store.dispatch('getHotList')
@@ -55,6 +64,7 @@ export default {
   mounted () {
     // 这里下面两个获取数据，就可以访问组件的实例了
     this.getKeystoneList()
+    this.getBanner()
     
     this.bind()
   },
@@ -82,8 +92,10 @@ export default {
             name: ''
         }
       })
-      console.log('************', this, '这里拿到的this，就是mehtods')
-      component.bannerList = result.data
+      console.log('************', this, '这里server拿到的this，就是mehtods')
+      console.log('************', component)
+      // if (component) component.data.activeOps.list = result.data
+      // else this.activeOps.list = result.data
       // component.activeOps.list = result.data
       // console.log(result)
       // this.bannerList = result.data

@@ -36,7 +36,8 @@ function createRenderer(bundle, options) {
             }),
             basedir: resolve('./dist'),
             runInNewContext: false, // 对于每次渲染，bundle renderer 将创建一个新的 V8 上下文并重新执行整个 bundle。性能开销很大
-            shouldPrefetch: false
+            shouldPrefetch: false,
+            inject: false
         })
     )
 }

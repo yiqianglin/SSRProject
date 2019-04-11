@@ -89,13 +89,13 @@ export default {
   },
   async asyncData ({ store }) {
     // console.log('store', store)
-    return Promise.all([
+    await Promise.all([
       store.dispatch('getHotList'),
       store.dispatch('getActiveDataTop'),
       store.dispatch('getKeystoneList'),
     ])
     // console.log('www')
-    // return {testData: 'wwww'}
+    return {testData: 'wwww', otherTestData: 'qqq'}
   },
   created () {
     // this.$store.dispatch('getHotList')
@@ -145,6 +145,7 @@ export default {
     bind: function () { },
     numIncreate () {
       this.num += 1
+      console.log(this.$store)
     }
   }
 }

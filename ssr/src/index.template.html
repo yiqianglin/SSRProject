@@ -12,7 +12,9 @@
   <meta itemprop="name" content="ssr例子"/>
   <meta itemprop="description" content="ssr例子"/>
   <meta itemprop="image" content="https://github.com/fluidicon.png"/>
+
   <title>ssr例子</title>
+  {{{ renderStyles() }}}
   <script>
       function loadError(e) {
         function LoadError(message) {
@@ -62,6 +64,10 @@
   <div id="app">
     <!--vue-ssr-outlet-->
   </div>
+  {{{ renderState({
+    contextKey: 'state'
+  }) }}}
+  {{{ renderScripts() }}}
 </body>
 
 </html>
